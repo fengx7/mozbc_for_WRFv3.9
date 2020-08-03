@@ -13,7 +13,7 @@
 !     parameters
 !-----------------------------------------------------------------
       integer, parameter :: specmax = 500
-      integer, parameter :: maxsize = 100
+      integer, parameter :: maxsize = 200
       integer, parameter :: kin = 15
 
 !-----------------------------------------------------------------

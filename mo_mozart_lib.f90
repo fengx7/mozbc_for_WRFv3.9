@@ -128,8 +128,14 @@
       call read_moz_times( ncid )
 
       time_type%ndx = lotim( wrf_date, wrf_datesec, moz_date, moz_datesec, ntime_m )
+      write(*,*) "first %ndx: wrf_date", wrf_date
+      write(*,*) "wrf_datesec:", wrf_datesec
+      write(*,*) "moz_date:", moz_date
+      write(*,*) "moz_datesec:",  moz_datesec
+      write(*,*) "ntime_m:", ntime_m
       if( time_type%ndx == 0 ) then
         status = nf_close( ncid )
+        write(*,*) 'call next_flnm, .false., open initial mozart'
         call next_flnm( moz_fn, .false. )
         filenm = trim( moz_dir ) // adjustl( moz_fn )
 !---------------------------------------------------------------
@@ -442,6 +448,7 @@
 !---------------------------------------------------------------
          time_type%ncid_lo    = ncid
          time_type%lo_moz_ndx = ntime_m
+         write(*,*) 'call next_flnm, .true., wrt time after present mozart dataset'
          call next_flnm( moz_fn, .true. )
          filenm = trim( moz_dir ) // adjustl( moz_fn )
 !---------------------------------------------------------------
@@ -535,7 +542,9 @@
       else
         file_number = file_number - 1
       endif
+      write(*,*) 'next_flnm; incr, file_number', incr, file_number
       write(numa,'(i5)') file_number+10000
+      write(*,*) 'next_flnm; numa', numa, filenm(il:iu), numa(2:5)
       filenm(il:iu) = numa(2:5)
 
       write(*,*) 'next_flnm; new file = ',trim(filenm)
