@@ -98,7 +98,7 @@
       integer :: xdimid(2),  ydimid(2), zdimid(2), wdimid(2), tdimid(2)
       integer :: dims(4)
       character(len=64) :: attribute
-      character(len=64) :: filespec(2)
+      character(len=255) :: filespec(2)
       character(len=32) :: varname
       character(len=32) :: dtstring
       character(len=19) :: tstring
@@ -440,7 +440,7 @@ any_missing : &
 !     local variables
 !------------------------------------------------------------------
       logical :: lexist
-      character(len=132) :: filenm
+      character(len=255) :: filenm
       character(len=19)  :: tstring
 
       call mz2wrf_time( tstring, date, secs )
